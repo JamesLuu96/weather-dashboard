@@ -17,13 +17,15 @@
     <div class="container d-flex flex-wrap">
         <!-- Main Left Column -->
         <div class="city-container text-center col-12 col-md-4 mt-1">
-            <form class="city-form">
-                <label for="city">
+            <form class="city-form d-flex flex-wrap align-items-center justify-content-center">
+                <label class="col-12 col-lg-6" for="city">
                     Search for a City:
                 </label>
                 
-                <input id="city" name="city" type="text" required>
-                <button id="search-btn" type="submit" class="p-1 btn btn-primary" ><span class="oi oi-magnifying-glass"></span></button>
+                <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+                    <input id="city" name="city" type="text" required>
+                    <button id="search-btn" type="submit" class="p-1 btn btn-primary m-1" ><span class="oi oi-magnifying-glass"></span></button>
+                </div>
             </form>
             <p id="recent-cities-title">Recent Cities:</p>
             <ul class="recent-cities text-left">
