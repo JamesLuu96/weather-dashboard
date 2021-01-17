@@ -107,7 +107,7 @@ var createUV = function(obj){
                     uvIndexEl.addClass('mod')
                 } else if(uv<=7){
                     uvIndexEl.addClass('high')
-                } else if(uv<=9){
+                } else if(uv<=10){
                     uvIndexEl.addClass('very-high')
                 } else {
                     uvIndexEl.addClass('extreme')
