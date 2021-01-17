@@ -45,7 +45,7 @@ var createConditions = function(data){
     var tempEl = $('<p>').text(`Temperature: ${data.main.temp} F`)
     var humidityEl = $('<p>').text(`Humidity: ${data.main.humidity}%`)
     var windEl = $('<p>').text(`Wind: ${data.wind.speed} Miles/HR`)
-    $('#sec-col').append(tempEl, humidityEl, windEl)
+    $('#sec-col').append(tempEl, humidityEl, windEl, createUV(data))
     $('.forecast-container').show()
 }
 
@@ -83,6 +83,42 @@ var createForecast = function(city){
             console.log(`ERROR`)
         }
     })
+}
+
+// Creates UV
+var createUV = function(obj){
+    var img = "https://www.epa.gov/sites/production/files/sunwise/images/uviscaleh_lg.gif"
+    var lat = obj.coord.lat
+    var lon = obj.coord.lon
+    var containerEl = $('<div>').attr('class', 'd-flex flex-wrap justify-content-center')
+    var imgEl = $('<img>').attr('src', img).attr('class', 'mw-100 text-center')
+    var apiurl = `http://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}&${apikey}`
+    fetch(apiurl)
+    .then(function(response){
+        if (response.ok){
+            response.json().then(function(data){
+                var uvIndexLabelEl = $('<p>').text(`UV Index: `)
+                var uv = data[0].value
+                var uvIndexEl = $('<span>').text(`${uv}`)
+                // check uv range
+                if(uv<=2){
+                    uvIndexEl.addClass('low')
+                } else if(uv<=5){
+                    uvIndexEl.addClass('mod')
+                } else if(uv<=7){
+                    uvIndexEl.addClass('high')
+                } else if(uv<=9){
+                    uvIndexEl.addClass('very-high')
+                } else {
+                    uvIndexEl.addClass('extreme')
+                }
+                uvIndexLabelEl.append(uvIndexEl)
+                containerEl.append(uvIndexLabelEl)
+                containerEl.append(imgEl)
+            })
+        }
+    })
+    return containerEl
 }
 
 // Checks to see how to add new city to recent

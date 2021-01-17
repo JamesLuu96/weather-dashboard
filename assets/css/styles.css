@@ -24,3 +24,20 @@ a:hover, a:visited, a:link, a:active {
 .forecast-container{
     margin: 0 auto;
 }
+.low {
+    background-color: rgb(27, 133, 27);
+}
+.mod {
+    background-color: rgb(223, 223, 47);
+}
+.high {
+    background-color: rgb(235, 140, 15);
+}
+.very-high {
+    background-color: rgb(128, 12, 12);
+    color: white;
+}
+.extreme {
+    background-color: rgb(82, 28, 133);
+    color: white;
+}
