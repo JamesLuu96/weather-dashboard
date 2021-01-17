@@ -101,13 +101,13 @@ var createUV = function(obj){
                 var uv = data[0].value
                 var uvIndexEl = $('<span>').text(`${uv}`)
                 // check uv range
-                if(uv<=2){
+                if(uv<3){
                     uvIndexEl.addClass('low')
-                } else if(uv<=5){
+                } else if(uv<6){
                     uvIndexEl.addClass('mod')
-                } else if(uv<=7){
+                } else if(uv<=8){
                     uvIndexEl.addClass('high')
-                } else if(uv<=10){
+                } else if(uv<11){
                     uvIndexEl.addClass('very-high')
                 } else {
                     uvIndexEl.addClass('extreme')
