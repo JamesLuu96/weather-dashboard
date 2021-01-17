@@ -1,0 +1,26 @@
+body {
+  font-family: 'Unica One', cursive;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a:hover, a:visited, a:link, a:active {
+    color: inherit;
+    text-decoration: none!important;
+    box-shadow: none!important;
+}
+.city-container{
+    background-color: rgba(241, 235, 235, .3);
+}
+.recent-city {
+    cursor: pointer;
+}
+.forecast-container div{
+    margin: 10px;
+}
+.forecast-container{
+    margin: 0 auto;
+}
