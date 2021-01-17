@@ -38,7 +38,7 @@ var createConditions = function(data){
     $('#conditions-info span').text(data.name)
     // First Column
     var weatherEl = $('<p>').text(data.weather[0].description)
-    var weatherIconEl = $('<img>').attr('src', `http://openweathermap.org/img/w/${data.weather[0].icon}.png`)
+    var weatherIconEl = $('<img>').attr('src', `https://openweathermap.org/img/w/${data.weather[0].icon}.png`)
     weatherEl.prepend(weatherIconEl)
     $('#first-col').append($('<p>').text('Today'), weatherEl)
     // Second Column
@@ -68,7 +68,7 @@ var createForecast = function(city){
                     dayEl = $('<p>').text(day)
                     // Creates Icon
                     var weatherEl = $('<p>').text(data.list[i].weather[0].description)
-                    var weatherIcon = $('<img>').attr('src', `http://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png`)
+                    var weatherIcon = $('<img>').attr('src', `https://openweathermap.org/img/w/${data.list[i].weather[0].icon}.png`)
                     weatherEl.prepend(weatherIcon)
                     // Creates Temp/Humidity
                     var tempEl = $('<p>').text(`Temperature: ${data.list[i].main.temp} F`)
@@ -92,7 +92,7 @@ var createUV = function(obj){
     var lon = obj.coord.lon
     var containerEl = $('<div>').attr('class', 'd-flex flex-wrap justify-content-center')
     var imgEl = $('<img>').attr('src', img).attr('class', 'mw-100 text-center')
-    var apiurl = `http://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}&${apikey}`
+    var apiurl = `https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${lon}&${apikey}`
     fetch(apiurl)
     .then(function(response){
         if (response.ok){
