@@ -9,7 +9,17 @@ if (localStorage.getItem('recent')===null){
 
 // Checks to see if valid
 var checkForecast = function(city){
-    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${city}&${apikey}`
+    var newCity = city
+    // function to check if zipcode
+    function hasNumber(myString) {
+        return /\d/.test(myString);
+    }
+    if(hasNumber(newCity)){
+        newCity = `zip=${newCity},us`
+    }else{
+        newCity = `q=${newCity}`
+    }
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=imperial&${newCity}&${apikey}`
     fetch(apiUrl)
     .then(function(response){
         if(response.ok){
@@ -21,12 +31,16 @@ var checkForecast = function(city){
                 }
             })
         } else{
-            throw new Error(`Invalid response!`)
+            // not working
+            // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
+            // document.querySelector('#search-btn').click()
+            throw(error)
         }
     })
-    .catch(function(){
-        document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
-        document.querySelector('#search-btn').click()
+    .catch(function(error){
+        console.log(error)
+        // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
+        // document.querySelector('#search-btn').click()
     })
 }
 
