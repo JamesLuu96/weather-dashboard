@@ -165,4 +165,3 @@ if (recentCities.length < 1){
 } else {
     createRecent()
 }
-// checkForecast('78753')
