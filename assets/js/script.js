@@ -146,7 +146,7 @@ var createRecent = function(){
 // Search Button 
 $('.city-form').on('submit', function(event){
     event.preventDefault()
-    var city = $(this).find('#city').val().toLowerCase()
+    var city = $(this).find('#city').val().trim().toLowerCase()
     checkForecast(city)
 })
 
