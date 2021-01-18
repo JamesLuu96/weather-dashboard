@@ -31,6 +31,7 @@ var checkForecast = function(city){
                 }
             })
         } else{
+            $('.forecast-container').fadeOut()        
             // not working
             // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
             // document.querySelector('#search-btn').reportValidity()
@@ -59,7 +60,7 @@ var createConditions = function(data){
     var humidityEl = $('<p>').text(`Humidity: ${data.main.humidity}%`)
     var windEl = $('<p>').text(`Wind: ${data.wind.speed} Miles/HR`)
     $('#sec-col').append(tempEl, humidityEl, windEl, createUV(data))
-    $('.forecast-container').show()
+    $('.forecast-container').fadeIn()
 }
 
 // Creates 5 day Forecasts
@@ -152,13 +153,14 @@ var createRecent = function(){
         var cityEl = $('<li>').attr('class', 'recent-city bg-dark text-light m-1 p-1').text(recentCities[i])
         $('.recent-cities').append(cityEl)
     }
-    $('#recent-cities-title').show()
+    $('#recent-cities-title').fadeIn()
     localStorage.setItem('recent', JSON.stringify(recentCities))
 }
 
 // Search Button 
 $('.city-form').on('submit', function(event){
     event.preventDefault()
+    $('.forecast-container').hide()
     var city = $(this).find('#city').val().trim().toLowerCase()
     checkForecast(city)
     $('.city-form').trigger('reset')
@@ -167,6 +169,7 @@ $('.city-form').on('submit', function(event){
 // Recent City Buttons
 $('.recent-cities').on('click', 'li', function(event){
     event.preventDefault()
+    $('.forecast-container').hide()
     var city = $(this).text()
     checkForecast(city)
     $('.city-form').trigger('reset')
