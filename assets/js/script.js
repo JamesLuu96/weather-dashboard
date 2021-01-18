@@ -33,7 +33,7 @@ var checkForecast = function(city){
         } else{
             // not working
             // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
-            // document.querySelector('#search-btn').click()
+            // document.querySelector('#search-btn').reportValidity()
         }
     })
     .catch(function(error){
@@ -161,6 +161,7 @@ $('.city-form').on('submit', function(event){
     event.preventDefault()
     var city = $(this).find('#city').val().trim().toLowerCase()
     checkForecast(city)
+    $('.city-form').trigger('reset')
 })
 
 // Recent City Buttons
@@ -168,6 +169,7 @@ $('.recent-cities').on('click', 'li', function(event){
     event.preventDefault()
     var city = $(this).text()
     checkForecast(city)
+    $('.city-form').trigger('reset')
 })
 
 // Hides Right Column
