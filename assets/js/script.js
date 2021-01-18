@@ -34,7 +34,6 @@ var checkForecast = function(city){
             // not working
             // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
             // document.querySelector('#search-btn').click()
-            throw(error)
         }
     })
     .catch(function(error){
