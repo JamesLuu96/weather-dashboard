@@ -31,16 +31,13 @@ var checkForecast = function(city){
                 }
             })
         } else{
-            $('.forecast-container').fadeOut()        
-            // not working
-            // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
-            // document.querySelector('#search-btn').reportValidity()
+            $('.forecast-container').fadeOut()
+            document.querySelector('#city').setCustomValidity("Invalid City Name")
+            document.querySelector('#city').reportValidity()
         }
     })
     .catch(function(error){
         console.log(error)
-        // document.querySelector('#search-btn').setCustomValidity("Invalid City Name")
-        // document.querySelector('#search-btn').click()
     })
 }
 

@@ -23,7 +23,7 @@
                 </label>
                 
                 <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center">
-                    <input id="city" name="city" type="text" required>
+                    <input id="city" name="city" type="text" oninput="this.setCustomValidity('')" required>
                     <button id="search-btn" type="submit" class="p-1 btn btn-primary m-1" ><span class="oi oi-magnifying-glass"></span></button>
                 </div>
             </form>
